@@ -3,11 +3,12 @@ import bcrypt from "bcrypt";
 import { hashPassword } from "../../utils/hashPassword.js";
 import { userLoginRepo, userRegistrationRepo } from "./users.repository.js";
 
+
 export const userRegistration = async (req, res, next) => {
   let { password } = req.body;
   password = await bcrypt.hash(password, 12);
   const resp = await userRegistrationRepo({ ...req.body, password });
-  
+
   try {
     if (resp.success) {
       res.status(201).json({
@@ -32,11 +33,12 @@ export const userLogin = async (req, res, next) => {
   // console.log(resp.success)
 
   try {
+    
     if (resp.success) {
       const token = jwt.sign(
        
         { _id: resp.res._id },
-        "thisIswork",
+        process.env.JWT_SECRET,
         {
           expiresIn: "1h",
         }

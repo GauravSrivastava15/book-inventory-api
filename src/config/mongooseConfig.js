@@ -10,9 +10,9 @@ export const connectUsingMongoose = async () => {
            useNewUrlParser: true,
            useUnifiedTopology: true
        });
-        // console.log("MongoDB connected using mongoose");
+        console.log("MongoDB connected using mongoose");
     } catch (err) {
-        // console.log(err);
+        console.log(err);
     }
 }
 
