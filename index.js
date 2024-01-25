@@ -12,5 +12,8 @@ app.use(express.json());
 
 app.use('/api/user', userRouter)
 app.use("/api/books", auth, booksRouter);
+app.use("/", (req, res) =>{
+    return res.json({msg:"Welcome to the Book Inventory Server"})
+})
 
 export default app;
