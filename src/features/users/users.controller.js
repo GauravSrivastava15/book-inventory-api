@@ -18,7 +18,7 @@ export const userRegistration = async (req, res, next) => {
       });
     } else {
       // console.log("Error while regitering");
-      // console.log(resp.error.msg);
+      // console.log(resp.error);
       res.status(400).json({msg:"Error has occured", error: resp.error.msg });
     }
   } catch (err) {
